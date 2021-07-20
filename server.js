@@ -3,29 +3,28 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 const db = require("./develop/db/db.json")
-const util = require("util");
+
 const PORT = process.env.PORT || 3000;
 
 
-//const readFileAs = util.promisify(fs.readFile);
-//const writeFileAs = util.promisify(fs.writeFile);
+
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("./develop/public"));
+app.use(express.static("./public"));
 
 
 
 //HTML Routes
 app.get('/notes' , function (req, res) {
-    res.sendFile(path.join(__dirname, './develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 app.get('/' , function (req, res) {
-    res.sendFile(path.join(__dirname, './develop/public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 app.get('*', function (req,res){
-    res.sendFile(path.join(__dirname, './develop/public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 
